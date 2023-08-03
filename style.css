@@ -35,6 +35,7 @@
     --amethystOrchid: #926aa6;
     --violet: #7733ff;
     --purple:#990099;
+    --darkpurple: #730099;
     --sand:#F7E9D4;
     --beige:#ffe6cc;
     --mist: #cccccc;
@@ -55,6 +56,7 @@
   body {
     background-color: var(--amethystOrchid);
   }
+
   .start-screen,
   .score-container {
     position: absolute;
@@ -66,20 +68,38 @@
     align-items: center;
     justify-content: center;
   }
+
   button {
     border: none;
     outline: none;
     cursor: pointer;
   }
+
   #start-button,
   #restart {
+    background-color: var(--sand);
+    box-shadow: 5px 5px 7px var(--orchid);
+    color: var(--mint);
+    text-shadow: 2px 2px 2px var(--forest);
     font-size: 1.3em;
     padding: 0.5em 1.8em;
     border-radius: 0.2em;
   }
+  #start-button:hover,
+  #restart:hover {
+    background-color: var(--mint);
+    box-shadow: 5px 5px 7px var(--sand);
+    color: var(--orchid);
+    text-shadow: 2px 2px 2px var(--forest);
+    font-size: 1.3em;
+    padding: 0.5em 1.8em;
+    border-radius: 0.2em;
+  }
+
   #restart {
     margin-top: 0.9em;
   }
+
   #display-container {
     background-color: var(--sand);
     padding: 3.1em 1.8em;
@@ -92,6 +112,7 @@
     left: 50%;
     border-radius: 0.6em;
   }
+
   .header {
     margin-bottom: 1.8em;
     display: flex;
@@ -100,8 +121,9 @@
     padding-bottom: 0.6em;
     border-bottom: 0.1em solid var(--orchid);
   }
+
   .timer-div {
-    background-color: var(--lavender);
+    background-color: var(--mint);
     width: 7.5em;
     border-radius: 1.8em;
     display: flex;
@@ -109,10 +131,12 @@
     justify-content: space-between;
     padding: 0.7em 1.8em;
   }
+
   .question {
     margin-bottom: 1.25em;
     font-weight: 600;
   }
+
   .option-div {
     font-size: 0.9em;
     width: 100%;
@@ -128,29 +152,48 @@
     color: #000000;
     cursor: not-allowed;
   }
+
   #next-button {
     font-size: 1em;
     margin-top: 1.5em;
     background-color: var(--amethystOrchid);
     color: var(--sand);
+    box-shadow: 5px 5px 7px var(--orchid);
+    text-shadow: 2px 2px 2px var(--forest);
     padding: 0.7em 1.8em;
     border-radius: 0.3em;
     float: right;
   }
+  #next-button:hover {
+    font-size: 1em;
+    margin-top: 1.5em;
+    background-color: var(--sand);
+    color: var(--amethystOrchid);
+    box-shadow: 5px 5px 7px var(--forest);
+    text-shadow: 2px 2px 2px var(--orchid);
+    padding: 0.7em 1.8em;
+    border-radius: 0.3em;
+    float: right;
+  }
+
   .hide {
     display: none;
   }
+
   .incorrect {
     background-color: var(--rusty);
     color: var(--blush);
     border-color: var(--raspberrySorbet);
   }
+
   .correct {
     background-color: var(--mint);
     color: var(--greenAsh);
     border-color: var(--grass);
   }
+
   #user-score {
     font-size: 1.5em;
     color: var(--sand);
+    text-shadow: 2px 2px 2px var(--mint);
   }

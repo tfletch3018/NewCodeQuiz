@@ -1,111 +1,181 @@
-const Questions = [{
-    q: "Commonly used data types DO NOT include:____.",
-    a: [
-        { text: "strings()", isCorrect: false },
-        { text: "booleans()", isCorrect: false },
-        { text: "alerts( )", isCorrect: true },
-        { text: "numbers()", isCorrect: false }
-    ]
-},
+let timeLeft = document.querySelector(".time-left");
+let quizContainer = document.getElementById("container");
+let nextBtn = document.getElementById("next-button");
+let countOfQuestion = document.querySelector(".number-of-question");
+let displayContainer = document.getElementById("display-container");
+let scoreContainer = document.querySelector(".score-container");
+let restart = document.getElementById("restart");
+let userScore = document.getElementById("user-score");
+let startScreen = document.querySelector(".start-screen");
+let startButton = document.getElementById("start-button");
+let questionCount;
+let scoreCount = 0;
+let count = 11;
+let countdown;
 
-{
-    q: "The condition in an if / else statement is enclosed within ____.",
-    a: [
-        { text: "quotes()", isCorrect: false },
-        { text: "curly brackets()", isCorrect: false },
-        { text: "parentheses()", isCorrect: true },
-        { text: "square brackets()", isCorrect: false }
-    ]
-},
+const quizArray = [
+    {
+        id: "0",
+        question: "Which is not a commonly used data type?",
+        options: ["Strings", "Booleans", "Alerts", "Numbers"],
+        correct: "Alerts",
+    },
 
-{
-    q: "Arrays in JavaScript can be used to store ____.",
-    a: [
-        { text: "numbers and strings()", isCorrect: false },
-        { text: "other arrays()", isCorrect: false },
-        { text: "booleans()", isCorrect: false },
-        { text: "all of the above()", isCorrect: true }
-    ]
-},
+    {
+        id: "1",
+        question: "What is the condition in an if/else statement enclosed with?",
+        options: ["quotes", "curly brackets", "parentheses", "square brackets"],
+        correct: "parentheses",
+    },
 
-{
-    q: "String values must be enclosed within ____ when being assigned to variables.",
-    a: [
-        { text: "commas()", isCorrect: false },
-        { text: "curly brackets()", isCorrect: false },
-        { text: "quotes()", isCorrect: true },
-        { text: "parentheses()", isCorrect: false }
-    ]
-},
+    {
+        id: "2",
+        question: "What are arrays in JavaScript used to store?",
+        options: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        correct: "all of the above",
+    },
 
-{
-    q: "A very useful tool used during development and debugging for printing content to the debugger is:",
-    a: [
-        { text: "JavaScript()", isCorrect: false },
-        { text: "terminal / bash()", isCorrect: false },
-        { text: "for loops()", isCorrect: false },
-        { text: "console.log()", isCorrect: true }
-    ]
-}
-]
+    {
+        id: "3",
+        question: "What must string values be enclosed with when being assigned to variables?",
+        options: ["quotes", "curly brackets", "commas", "parentheses"],
+        correct: "quotes",
+    },
 
-let currQuestion = 0
-let score = 0
- 
-function loadQues() {
-    const question = document.getElementById("ques")
-    const opt = document.getElementById("opt")
- 
-    question.textContent = Questions[currQuestion].q;
-    opt.innerHTML = ""
- 
-    for (let i = 0; i < Questions[currQuestion].a.length; i++) {
-        const choicesdiv = document.createElement("div");
-        const choice = document.createElement("input");
-        const choiceLabel = document.createElement("label");
- 
-        choice.type = "radio";
-        choice.name = "answer";
-        choice.value = i;
- 
-        choiceLabel.textContent = Questions[currQuestion].a[i].text;
- 
-        choicesdiv.appendChild(choice);
-        choicesdiv.appendChild(choiceLabel);
-        opt.appendChild(choicesdiv);
+    {
+        id: "4",
+        question: "Which is a very useful tool used during development and debugging for printing content to the debugger?",
+        options: ["JavaScript", "terminal/bash", "for loops", "console"],
+        correct: "terminal/bash",
+    },
+];
+
+//Restart Quiz
+restart.addEventListener("click", () => {
+    initial();
+    displayContainer.classList.remove("hide");
+    scoreContainer.classList.add("hide");
+  });
+  //Next Button
+  nextBtn.addEventListener(
+    "click",
+    (displayNext = () => {
+      //increment questionCount
+      questionCount += 1;
+      //if last question
+      if (questionCount == quizArray.length) {
+        //hide question container and display score
+        displayContainer.classList.add("hide");
+        scoreContainer.classList.remove("hide");
+        //user score
+        userScore.innerHTML =
+          "Your score is " + scoreCount + " out of " + questionCount;
+      } else {
+        //display questionCount
+        countOfQuestion.innerHTML =
+          questionCount + 1 + " of " + quizArray.length + " Question";
+        //display quiz
+        quizDisplay(questionCount);
+        count = 11;
+        clearInterval(countdown);
+        timerDisplay();
+      }
+    })
+  );
+  //Timer
+  const timerDisplay = () => {
+    countdown = setInterval(() => {
+      count--;
+      timeLeft.innerHTML = `${count}s`;
+      if (count == 0) {
+        clearInterval(countdown);
+        displayNext();
+      }
+    }, 1000);
+  };
+  //Display quiz
+  const quizDisplay = (questionCount) => {
+    let quizCards = document.querySelectorAll(".container-mid");
+    //Hide other cards
+    quizCards.forEach((card) => {
+      card.classList.add("hide");
+    });
+    //display current question card
+    quizCards[questionCount].classList.remove("hide");
+  };
+  //Quiz Creation
+  function quizCreator() {
+    //randomly sort questions
+    quizArray.sort(() => Math.random() - 0.5);
+    //generate quiz
+    for (let i of quizArray) {
+      //randomly sort options
+      i.options.sort(() => Math.random() - 0.5);
+      //quiz card creation
+      let div = document.createElement("div");
+      div.classList.add("container-mid", "hide");
+      //question number
+      countOfQuestion.innerHTML = 1 + " of " + quizArray.length + " Question";
+      //question
+      let question_DIV = document.createElement("p");
+      question_DIV.classList.add("question");
+      question_DIV.innerHTML = i.question;
+      div.appendChild(question_DIV);
+      //options
+      div.innerHTML += `
+      <button class="option-div" onclick="checker(this)">${i.options[0]}</button>
+       <button class="option-div" onclick="checker(this)">${i.options[1]}</button>
+        <button class="option-div" onclick="checker(this)">${i.options[2]}</button>
+         <button class="option-div" onclick="checker(this)">${i.options[3]}</button>
+      `;
+      quizContainer.appendChild(div);
     }
-}
- 
-loadQues();
- 
-function loadScore() {
-    const totalScore = document.getElementById("score")
-    totalScore.textContent = `You scored ${score} out of ${Questions.length}`
-}
- 
- 
-function nextQuestion() {
-    if (currQuestion < Questions.length - 1) {
-        currQuestion++;
-        loadQues();
+  }
+  //Checker Function to check if option is correct or not
+  function checker(userOption) {
+    let userSolution = userOption.innerText;
+    let question =
+      document.getElementsByClassName("container-mid")[questionCount];
+    let options = question.querySelectorAll(".option-div");
+    //if user clicked answer == correct option stored in object
+    if (userSolution === quizArray[questionCount].correct) {
+      userOption.classList.add("correct");
+      scoreCount++;
     } else {
-        document.getElementById("opt").remove()
-        document.getElementById("ques").remove()
-        document.getElementById("btn").remove()
-        loadScore();
+      userOption.classList.add("incorrect");
+      //For marking the correct option
+      options.forEach((element) => {
+        if (element.innerText == quizArray[questionCount].correct) {
+          element.classList.add("correct");
+        }
+      });
     }
-}
- 
-function checkAns() {
-    const selectedAns = parseInt(document.querySelector('input[name="answer"]:checked').value);
- 
-    if (Questions[currQuestion].a[selectedAns].isCorrect) {
-        score++;
-        console.log("Correct")
-        nextQuestion();
-    } else {
-        nextQuestion();
-    }
-}
-
-
+    //clear interval(stop timer)
+    clearInterval(countdown);
+    //disable all options
+    options.forEach((element) => {
+      element.disabled = true;
+    });
+  }
+  //initial setup
+  function initial() {
+    quizContainer.innerHTML = "";
+    questionCount = 0;
+    scoreCount = 0;
+    count = 11;
+    clearInterval(countdown);
+    timerDisplay();
+    quizCreator();
+    quizDisplay(questionCount);
+  }
+  //when user click on start button
+  startButton.addEventListener("click", () => {
+    startScreen.classList.add("hide");
+    displayContainer.classList.remove("hide");
+    initial();
+  });
+  //hide quiz and display start screen
+  window.onload = () => {
+    startScreen.classList.remove("hide");
+    displayContainer.classList.add("hide");
+  };

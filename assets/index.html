@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Code Quiz</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <div class="start-screen">
-      <button id="start-button">Start</button>
-    </div>
+<body>
 
-    <div id="display-container">
-      <div class="header">
-        <div class="number-of-count">
-          <span class="number-of-question">1 of 5 questions</span>
-        </div>
+  <div class="start-screen">
+    <button id="start-button">Start</button>
+  </div>
 
-        <div class="timer-div">
-          <img src="../assets/images/timer.png" />
-          <span class="time-left">10s</span>
-        </div>
-
+  <div id="display-container">
+    <div class="header">
+      <div class="number-of-count">
+        <span class="number-of-question">1 of 5 questions</span>
       </div>
 
-      <div id="container">
+      <div class="timer-div">
+        <span class="material-symbols-outlined">
+          timer
+        </span>
+        <span class="time-left">10s</span>
       </div>
-      <button id="next-button">Next</button>
     </div>
 
-    <div class="score-container hide">
-      <div id="user-score">Demo Score</div>
-      <button id="restart">Restart</button>
+    <div id="container">
     </div>
+    <button id="next-button">Next</button>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+  <div class="score-container hide">
+    <div id="user-score">Demo Score</div>
+    <button id="restart">Restart</button>
+  </div>
+
+  <script src="script.js"></script>
+  
+</body>
+
 </html>

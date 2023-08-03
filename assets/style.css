@@ -55,10 +55,11 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Russo+One", sans-serif;
+    /* font-family: "Russo+One", sans-serif; */
   }
  
   body {
+    font-family: "Russo+One", sans-serif;
     background: linear-gradient(0deg, var(--amethystOrchid) 0%, var(--eggplant) 63%);
     min-height: 100vh;
     display: flex;
@@ -85,7 +86,6 @@
   #start-button,
   #restart {
     background: radial-gradient(circle, var(--sand) 0%, var(--milkchocolate) 100%);
-
     box-shadow: 5px 5px 7px var(--orchid);
     color: var(--mint);
     text-shadow: 2px 2px 2px var(--forest);
@@ -206,16 +206,12 @@
 
   .incorrect {
     background: linear-gradient(0deg, var(--fire) 0%, var(--blush) 53%);
-
-    /* background-color: var(--rusty); */
     color: var(--blush);
     border-color: var(--raspberrySorbet);
   }
 
   .correct {
     background: linear-gradient(0deg, var(--grass) 0%, var(--mint) 53%);
-
-    /* background-color: var(--mint); */
     color: var(--greenAsh);
     border-color: var(--grass);
   }

@@ -3,6 +3,7 @@
     --sea:#e6ffe6;
     --thinMint:#E3F7D4;
     --mint:#99ffcc;
+    --seaGreen:#33ff77;
     --forest:#004d26;
     --green: #009933;
     --grass: #208000;
@@ -36,8 +37,12 @@
     --violet: #7733ff;
     --purple:#990099;
     --darkpurple: #730099;
+    --eggplant:#4d004d;
     --sand:#F7E9D4;
     --beige:#ffe6cc;
+    --cafeaulait: #d9b38c;
+    --milkchocolate: #996633;
+    --warmchocolate:#804000;
     --mist: #cccccc;
     --fog: #bfbfbf;
     --misty:#999999;
@@ -54,7 +59,9 @@
   }
  
   body {
-    background-color: var(--amethystOrchid);
+    background: linear-gradient(0deg, var(--amethystOrchid) 0%, var(--eggplant) 63%);
+    min-height: 100vh;
+    display: flex;
   }
 
   .start-screen,
@@ -77,7 +84,8 @@
 
   #start-button,
   #restart {
-    background-color: var(--sand);
+    background: radial-gradient(circle, var(--sand) 0%, var(--milkchocolate) 100%);
+
     box-shadow: 5px 5px 7px var(--orchid);
     color: var(--mint);
     text-shadow: 2px 2px 2px var(--forest);
@@ -87,7 +95,7 @@
   }
   #start-button:hover,
   #restart:hover {
-    background-color: var(--mint);
+    background: radial-gradient(circle, var(--grass) 0%, var(--mint) 100%);
     box-shadow: 5px 5px 7px var(--sand);
     color: var(--orchid);
     text-shadow: 2px 2px 2px var(--forest);
@@ -123,8 +131,23 @@
   }
 
   .timer-div {
-    background-color: var(--mint);
+    background: radial-gradient(circle, var(--orchid) 0%, var(--amethystOrchid) 100%);
+    box-shadow: 5px 5px 7px var(--amethystOrchid);
     width: 7.5em;
+    color: var(--sand);
+    text-shadow: 2px 2px 2px var(--milkchocolate);
+    border-radius: 1.8em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7em 1.8em;
+  }
+  .timer-div:hover {
+    background: radial-gradient(circle, var(--mint) 0%, var(--grass) 100%);
+    box-shadow: 5px 5px 7px var(--greenAsh);
+    width: 7.5em;
+    color: var(--orchid);
+    text-shadow: 2px 2px 2px var(--eggplant);
     border-radius: 1.8em;
     display: flex;
     align-items: center;
@@ -134,11 +157,12 @@
 
   .question {
     margin-bottom: 1.25em;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .option-div {
     font-size: 0.9em;
+    font-weight: 600;
     width: 100%;
     padding: 1em;
     margin: 0.3em 0;
@@ -156,10 +180,10 @@
   #next-button {
     font-size: 1em;
     margin-top: 1.5em;
-    background-color: var(--amethystOrchid);
+    background: radial-gradient(circle, var(--amethystOrchid) 0%, var(--orchid) 100%);
     color: var(--sand);
-    box-shadow: 5px 5px 7px var(--orchid);
-    text-shadow: 2px 2px 2px var(--forest);
+    box-shadow: 5px 5px 7px var(--amethystOrchid);
+    text-shadow: 2px 2px 2px var(--milkchocolate);
     padding: 0.7em 1.8em;
     border-radius: 0.3em;
     float: right;
@@ -167,10 +191,10 @@
   #next-button:hover {
     font-size: 1em;
     margin-top: 1.5em;
-    background-color: var(--sand);
-    color: var(--amethystOrchid);
-    box-shadow: 5px 5px 7px var(--forest);
-    text-shadow: 2px 2px 2px var(--orchid);
+    background: radial-gradient(circle, var(--mint) 0%, var(--grass) 100%);
+    color: var(--orchid);
+    box-shadow: 5px 5px 7px var(--greenAsh);
+    text-shadow: 2px 2px 2px var(--eggplant);
     padding: 0.7em 1.8em;
     border-radius: 0.3em;
     float: right;
@@ -181,13 +205,17 @@
   }
 
   .incorrect {
-    background-color: var(--rusty);
+    background: linear-gradient(0deg, var(--fire) 0%, var(--blush) 53%);
+
+    /* background-color: var(--rusty); */
     color: var(--blush);
     border-color: var(--raspberrySorbet);
   }
 
   .correct {
-    background-color: var(--mint);
+    background: linear-gradient(0deg, var(--grass) 0%, var(--mint) 53%);
+
+    /* background-color: var(--mint); */
     color: var(--greenAsh);
     border-color: var(--grass);
   }

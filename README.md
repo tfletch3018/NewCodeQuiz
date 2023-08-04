@@ -24,7 +24,7 @@ If you would like to demo this program, please click on the link in the finished
 <img src="assets\images\Screenshot5.png">
 
 ## Finished Project!
-[Check out the deployed application on Heroku](https://intense-beyond-20958.herokuapp.com/)
+[Check out the deployed application on Github Pages!](https://tfletch3018.github.io/NewCodeQuiz/)
 
 [Watch the demo video](https://drive.google.com/file/d/1mgbvn__-zQ1R6NlPvMMYv4NBf61RpWWV/view?usp=sharing)
 

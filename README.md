@@ -15,7 +15,7 @@ To install this repo on your local drive you would have to clone the ssh key fro
  ## Usage
 If you would like to demo this program, please click on the link in the finished project section of this README.
 
-<img src="" />
+<img src="assets\images\demo.gif">
 
 <img src="assets\images\Screenshot1.png">
 <img src="assets\images\Screenshot2.png">
